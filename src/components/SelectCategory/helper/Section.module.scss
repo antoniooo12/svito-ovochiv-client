@@ -1,0 +1,32 @@
+.wrapper {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 17px;
+  color: #121B24;
+  max-width: 100%;
+  background-blend-mode: hard-light;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: #EBF7D3;
+
+
+  img {
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+    padding: 1px 5px 2px 5px;
+    border-radius: 5px;
+    position: absolute;
+  }
+}

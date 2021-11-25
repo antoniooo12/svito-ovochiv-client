@@ -1,0 +1,31 @@
+.wrapper {
+  width: 108px;
+  height: 30px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+  outline: none;
+  border: none;
+
+  .minus {
+    position: absolute;
+    left: 12px;
+    bottom: 50%;
+    transform: translateY(25%);
+  }
+
+  .plus {
+    position: absolute;
+    right: 12px;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+
+  .number {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+  }
+}
