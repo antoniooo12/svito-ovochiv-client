@@ -1,10 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cl from './BtnProduct.module.scss';
-const BtnProduct = ({price} ,...props) => {
-    console.log(props)
+import {useDispatch} from "react-redux";
+
+const BtnProduct = ({price, id, title}, ...props) => {
+    const dispatch = useDispatch()
+
+
+    const [isActive, setIsActive] = useState(false)
+    const [weight, setWeight] = useState(0.2)
+    const onBtn = () => {
+        setIsActive(!isActive)
+    }
+    const onPLus = (e) => {
+        e.stopPropagation()
+        setWeight(Math.round(((weight + 0.1) + Number.EPSILON) * 100) / 100)
+    }
+    const onMinus = (e) => {
+        e.stopPropagation()
+        if (weight - 0.1 < 0.1) {
+            console.log('sd')
+            setIsActive(false)
+        } else {
+            setWeight(Math.round(((weight - 0.1) + Number.EPSILON) * 100) / 100)
+        }
+
+    }
     return (
-        <button {...props} className={cl.wrapper}>
-            <div className={cl.minus}>
+        <button {...props} className={cl.wrapper}
+                onClick={() => onBtn()}
+        >
+            <div onClick={(e) => onMinus(e)}
+                 className={[cl.minus, !isActive && cl.minusHide].join(' ')}>
                 <svg width="11" height="3" viewBox="0 0 11 3" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -12,8 +38,10 @@ const BtnProduct = ({price} ,...props) => {
                         fill="#2C2C2C"/>
                 </svg>
             </div>
-            <div className={cl.number}>{price}</div>
-            <div className={cl.plus}>
+            <div className={[cl.number, isActive && cl.numberHide].join(' ')}>{price} ₴</div>
+            <div className={[cl.weight, !isActive && cl.weightHide].join(' ')}>{weight} кг</div>
+            <div onClick={(e) => onPLus(e)}
+                 className={[cl.plus, !isActive && cl.plusHide].join(' ')}>
                 <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <path

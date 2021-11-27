@@ -7,12 +7,18 @@
   position: relative;
   outline: none;
   border: none;
+  overflow: hidden;
 
   .minus {
     position: absolute;
     left: 12px;
     bottom: 50%;
     transform: translateY(25%);
+    transition: left 0.2s ease-out;
+  }
+
+  .minusHide {
+    left: -20px;
   }
 
   .plus {
@@ -20,12 +26,37 @@
     right: 12px;
     bottom: 50%;
     transform: translateY(50%);
+    transition: right 0.2s ease-out;
+  }
+
+  .plusHide {
+    right: -20px;
   }
 
   .number {
+    width: fit-content;
     position: absolute;
     left: 50%;
     bottom: 50%;
     transform: translate(-50%, 50%);
+    transition: bottom .32s ease-out, opacity .2s;
+  }
+
+  .numberHide {
+    bottom: 150%;
+    opacity: 0.5;
+  }
+
+  .weight {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 50%);
+    transition: top .3s ease, opacity .2s;
+  }
+
+  .weightHide {
+    top: 150%;
+    opacity: 0.5;
   }
 }

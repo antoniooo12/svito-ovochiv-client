@@ -55,6 +55,7 @@
   }
 
   .hiddenActive {
+    z-index: 1;
     p{
       pointer-events: none;
     }
