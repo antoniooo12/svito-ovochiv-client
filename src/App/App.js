@@ -15,8 +15,9 @@ const App = () => {
             {/*<ProductsPage/>*/}
             <CartBtn/>
             <Routes>
-                <Route path="/products" element={<ProductsPage/>}/>
+                <Route path="/" element={<ProductsPage/>}/>
                 <Route path="/cart" element={<CartPage/>}/>
+                <Route path="*" element={<ProductsPage/>}/>
             </Routes>
         </div>
     );

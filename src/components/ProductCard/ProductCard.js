@@ -5,7 +5,7 @@ import BtnProduct from "../UI/BtnProduct/BtnProduct";
 const ProductCard = ({item}) => {
     return (
         <div className={cl.wrapper}>
-            <img src="images/products/Tomatos.jpg" alt=""/>
+            {/*<img src="images/products/Tomatos.jpg" alt=""/>*/}
             <div className={cl.description}>
                  <h5>{item.title}</h5>
             </div>

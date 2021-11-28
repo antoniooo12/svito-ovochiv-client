@@ -2,6 +2,12 @@ import axios from "axios";
 import {setProducts, setSection} from "../reducer/productReducer";
 import {useSelector} from "react-redux";
 import {setCartStatus} from "../reducer/cartReducer";
+export function loadFiles() {
+    try {
+
+    } catch (e) {
+    }
+}
 
 export function getProduct() {
     return async dispatch => {
