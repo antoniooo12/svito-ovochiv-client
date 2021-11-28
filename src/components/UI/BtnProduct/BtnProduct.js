@@ -11,6 +11,11 @@ const BtnProduct = ({price, id, title}, ...props) => {
     const [isActive, setIsActive] = useState(false)
     const [weight, setWeight] = useState(productInCart && productInCart.weight)
 
+    useEffect(() => {
+        setWeight(productInCart && productInCart.weight)
+    }, [productInCart])
+
+
     const onBtn = async (e) => {
         e.stopPropagation()
         dispatch(setProductInCart({price, id, title}))
@@ -18,16 +23,17 @@ const BtnProduct = ({price, id, title}, ...props) => {
         setIsActive(true)
     }
 
-    const onPLus = (e) => {
+    const onPLus = async (e) => {
         e.stopPropagation()
-        dispatch(increaseProductInCart({id}))
-        setWeight(productInCart && productInCart.weight)
+        await dispatch(increaseProductInCart({id}))
+        await setWeight(productInCart && productInCart.weight)
+        console.log(weight)
 
     }
-    const onMinus = (e) => {
+    const onMinus = async (e) => {
         e.stopPropagation()
-        dispatch(reduceProductFromCart({id}))
-        setWeight(productInCart && productInCart.weight)
+        await dispatch(reduceProductFromCart({id}))
+        await setWeight(productInCart && productInCart.weight)
         if (productInCart.weight - 0.1 < 0.1) {
             setIsActive(false)
         }

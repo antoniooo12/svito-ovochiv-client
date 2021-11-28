@@ -1,0 +1,11 @@
+.wrapper {
+  margin-left: 15px;
+
+  textarea {
+    display: block;
+  }
+  &>div{
+    margin-top: 15px;
+    margin-bottom: 7px;
+  }
+}

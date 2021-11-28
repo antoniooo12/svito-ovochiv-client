@@ -1,5 +1,7 @@
 import axios from "axios";
 import {setProducts, setSection} from "../reducer/productReducer";
+import {useSelector} from "react-redux";
+import {setCartStatus} from "../reducer/cartReducer";
 
 export function getProduct() {
     return async dispatch => {
@@ -21,6 +23,21 @@ export function getSection() {
             dispatch(setSection(res.data))
         } catch (e) {
             console.log(e)
+        }
+    }
+}
+
+export function createOrder(client, cart) {
+    return async dispatch => {
+        try {
+            // const cart = useSelector(state => state.cart.itemsInCart)
+            const res = await axios.post(`http://localhost:4800/api/user/createOrder`,
+                {client ,cart}
+            )
+            console.log(res)
+
+        } catch (e) {
+
         }
     }
 }

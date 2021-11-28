@@ -1,10 +1,10 @@
 import React from 'react';
+import CartFrom from "../components/CartForm/CartFrom";
 
 const CartPage = () => {
     return (
         <div>
-            ssssssssss
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <CartFrom/>
         </div>
     );
 };
