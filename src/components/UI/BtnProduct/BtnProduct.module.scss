@@ -1,3 +1,7 @@
+.wrapperDisable {
+  pointer-events: none;
+}
+
 .wrapper {
   width: 108px;
   height: 30px;
@@ -15,6 +19,8 @@
     bottom: 50%;
     transform: translateY(25%);
     transition: left 0.2s ease-out;
+    pointer-events: auto;
+    cursor: pointer;
   }
 
   .minusHide {
@@ -27,6 +33,8 @@
     bottom: 50%;
     transform: translateY(50%);
     transition: right 0.2s ease-out;
+    pointer-events: auto;
+    cursor: pointer;
   }
 
   .plusHide {

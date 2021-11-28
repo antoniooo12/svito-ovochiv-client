@@ -29,6 +29,7 @@ const ProductSection = () => {
                             {products.filter(el => el.typeId === section.id).map(item =>
                                 <div key={item.id}>
                                     <ProductCard
+
                                         item={item}
                                     />
                                 </div>)

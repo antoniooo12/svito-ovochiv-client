@@ -1,0 +1,36 @@
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 110px;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  border-radius: 15px 15px 0px 0px;
+  z-index: 1;
+  color: #121B24;
+
+  & > p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 25px;
+    margin-top: 12px;
+  }
+
+  .cartBtn {
+    margin-top: 8px;
+    margin-right: 12px;
+    margin-left: 12px;
+    max-width: 100%;
+    height: 54px;
+    background: linear-gradient(272.17deg, #FCE000 30.73%, #FEED54 77.02%);
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 13px;
+  }
+}

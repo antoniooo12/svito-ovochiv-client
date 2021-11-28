@@ -1,33 +1,40 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './BtnProduct.module.scss';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {increaseProductInCart, reduceProductFromCart, setProductInCart} from "../../../reducer/cartReducer";
 
 const BtnProduct = ({price, id, title}, ...props) => {
     const dispatch = useDispatch()
-
+    const productInCart = useSelector(state => state.cart.itemsInCart.filter(p => p.id === id)[0])
+    console.log(productInCart)
 
     const [isActive, setIsActive] = useState(false)
-    const [weight, setWeight] = useState(0.2)
-    const onBtn = () => {
-        setIsActive(!isActive)
+    const [weight, setWeight] = useState(productInCart && productInCart.weight)
+
+    const onBtn = async (e) => {
+        e.stopPropagation()
+        dispatch(setProductInCart({price, id, title}))
+        setWeight(productInCart && productInCart.weight)
+        setIsActive(true)
     }
+
     const onPLus = (e) => {
         e.stopPropagation()
-        setWeight(Math.round(((weight + 0.1) + Number.EPSILON) * 100) / 100)
+        dispatch(increaseProductInCart({id}))
+        setWeight(productInCart && productInCart.weight)
+
     }
     const onMinus = (e) => {
         e.stopPropagation()
-        if (weight - 0.1 < 0.1) {
-            console.log('sd')
+        dispatch(reduceProductFromCart({id}))
+        setWeight(productInCart && productInCart.weight)
+        if (productInCart.weight - 0.1 < 0.1) {
             setIsActive(false)
-        } else {
-            setWeight(Math.round(((weight - 0.1) + Number.EPSILON) * 100) / 100)
         }
-
     }
     return (
-        <button {...props} className={cl.wrapper}
-                onClick={() => onBtn()}
+        <button {...props} className={[cl.wrapper, isActive && cl.wrapperDisable].join(' ')}
+                onClick={(e) => onBtn(e)}
         >
             <div onClick={(e) => onMinus(e)}
                  className={[cl.minus, !isActive && cl.minusHide].join(' ')}>
@@ -39,7 +46,9 @@ const BtnProduct = ({price, id, title}, ...props) => {
                 </svg>
             </div>
             <div className={[cl.number, isActive && cl.numberHide].join(' ')}>{price} ₴</div>
-            <div className={[cl.weight, !isActive && cl.weightHide].join(' ')}>{weight} кг</div>
+            <div
+                className={[cl.weight, !isActive && cl.weightHide].join(' ')}>{weight} кг
+            </div>
             <div onClick={(e) => onPLus(e)}
                  className={[cl.plus, !isActive && cl.plusHide].join(' ')}>
                 <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
