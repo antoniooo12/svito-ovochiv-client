@@ -1,0 +1,49 @@
+
+.wrapper {
+  max-width: 100%;
+  height: 60px;
+  margin-top: 18px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  position: relative;
+  .leftBlock {
+    height: 100%;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0.03em;
+    font-style: normal;
+    font-weight: 450;
+    color: #000000;
+    position: relative;
+
+  }
+
+  .title {
+    float: top;
+    margin-bottom: 8px;
+  }
+
+  .unit {
+    float: bottom;
+
+    &>span{
+      font-size: 12px;
+    }
+
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #C4C4C4;
+  }
+}
+
+
+

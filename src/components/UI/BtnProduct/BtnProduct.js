@@ -3,37 +3,40 @@ import cl from './BtnProduct.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {increaseProductInCart, reduceProductFromCart, setProductInCart} from "../../../reducer/cartReducer";
 
-const BtnProduct = ({price, id, title}, ...props) => {
+const BtnProduct = ({price, id, title, active}, ...props) => {
     const dispatch = useDispatch()
     const productInCart = useSelector(state => state.cart.itemsInCart.filter(p => p.id === id)[0])
-    console.log(productInCart)
 
     const [isActive, setIsActive] = useState(false)
-    const [weight, setWeight] = useState(productInCart && productInCart.weight)
+    const [weight, setWeight] = useState(0)
 
     useEffect(() => {
         setWeight(productInCart && productInCart.weight)
-    }, [productInCart])
+    }, [productInCart && productInCart.weight])
 
+
+    useEffect(() => {
+        if (productInCart) {
+            setIsActive(true)
+        }
+        // console.log(productInCart)
+        // setIsActive(active)
+    }, [])
 
     const onBtn = async (e) => {
         e.stopPropagation()
         dispatch(setProductInCart({price, id, title}))
-        setWeight(productInCart && productInCart.weight)
         setIsActive(true)
     }
 
     const onPLus = async (e) => {
         e.stopPropagation()
-        await dispatch(increaseProductInCart({id}))
-        await setWeight(productInCart && productInCart.weight)
-        console.log(weight)
-
+        dispatch(increaseProductInCart({id}))
+        setWeight(productInCart && productInCart.weight)
     }
     const onMinus = async (e) => {
         e.stopPropagation()
-        await dispatch(reduceProductFromCart({id}))
-        await setWeight(productInCart && productInCart.weight)
+        dispatch(reduceProductFromCart({id}))
         if (productInCart.weight - 0.1 < 0.1) {
             setIsActive(false)
         }

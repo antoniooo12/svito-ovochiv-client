@@ -13,7 +13,11 @@ const ProductCard = ({item}) => {
             <p>{item.minWeight}</p>
 
             <div className={cl.btn}>
-                <BtnProduct price={item.price} id={item.id} title={item.title}/>
+                <BtnProduct price={item.price}
+                            id={item.id}
+                            title={item.title}
+                            active={item.selected}
+                />
             </div>
         </div>
     );

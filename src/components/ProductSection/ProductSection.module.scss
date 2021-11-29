@@ -1,8 +1,7 @@
-
+@import "./src/Gobal";
 .wrapper {
-  margin-top: 15px;
-  margin-right: 15px;
-  margin-left: 15px;
+  margin: 15px 15px $CartButtonHeight;
+
   h4 {
     margin-bottom: 15px;
     font-weight: 600;

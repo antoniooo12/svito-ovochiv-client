@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import cl from './CartForm.module.scss'
-import {createOrder} from "../../actions/product";
+import {createOrder} from "../../../actions/product";
 import {useDispatch, useSelector} from "react-redux";
 
 const CartFrom = () => {

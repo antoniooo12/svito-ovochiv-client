@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './ProductSection.module.scss';
 import BtnProduct from "../UI/BtnProduct/BtnProduct";
 import ProductCard from "../ProductCard/ProductCard";
@@ -10,13 +10,21 @@ const ProductSection = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.products.products) || []
     const sections = useSelector(state => state.products.sections) || []
-
-
+    const itemsInCart = useSelector(state => state.products.itemsInCart) || []
+    const sumInCart = useSelector(state => state.products.sum) || 0
     const productsWithoutSection = products.filter(el => el.typeId === null)
+
+    const [productView, setProductView] = useState([])
+
+
+
+
     useEffect(() => {
         dispatch(getSection())
         dispatch(getProduct())
+        setProductView()
     }, [])
+
 
 
     return (
@@ -24,15 +32,15 @@ const ProductSection = () => {
             {sections.map(section => {
                 return (
                     <>
-                        <h4 key={'t'+section.id}> {section.title}</h4>
-                        <div  key={'b'+section.id} className={cl.itemsSection}>
+                        <h4  key={'t' + section.id}> {section.title}</h4>
+                        <div key={'b' + section.id} className={cl.itemsSection}>
                             {products.filter(el => el.typeId === section.id).map(item =>
                                 <div key={item.id}>
                                     <ProductCard
-
                                         item={item}
                                     />
                                 </div>)
+
 
                             }
                         </div>

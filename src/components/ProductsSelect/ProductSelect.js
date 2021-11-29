@@ -7,8 +7,7 @@ const ProductSelect = () => {
     const items = Array.from(itemsSelect)
     const [moreIsVisible, setMoreIsVisible] = useState(false)
     const hidden = items.splice(5, items.length - 1)
-    console.log(items)
-    console.log(hidden)
+
     const moreIsVisibleToggle = () => {
         setMoreIsVisible(!moreIsVisible)
     }

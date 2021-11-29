@@ -13,7 +13,14 @@ export default function cartReducer(state = defaultState, action) {
     switch (action.type) {
 
         case SET_ITEM_IN_CART: {
+            // debugger
+            const productIndex = state.itemsInCart.findIndex(p => p.id === action.payload.id)
+            if (productIndex >= 0) {
+                return {...state}
+            }
             let item = action.payload
+
+
             item.weight = 0.2
             let updatedSum = Math.round(((item.price * item.weight) + Number.EPSILON) * 100) / 100
             item.sum = updatedSum
